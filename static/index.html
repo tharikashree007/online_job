@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HireHub — Job Search & Recruitment</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">H</span> HireHub</a>
+    <nav>
+      <button class="nav-link active" data-view="jobs">Find jobs</button>
+      <button class="nav-link" data-view="history">My applications</button>
+      <a class="nav-link" href="/docs" target="_blank" rel="noreferrer">API docs ↗</a>
+    </nav>
+    <div class="avatar" title="Job seeker">JS</div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">YOUR NEXT CHAPTER STARTS HERE</p>
+        <h1>Find work that<br><span>moves you forward.</span></h1>
+        <p class="hero-subtitle">Discover opportunities, apply with confidence, and track every step of your journey.</p>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="art-card"><span class="art-icon">✦</span><div class="art-lines"><i></i><i></i><i></i></div><b>Opportunity awaits</b></div>
+        <span class="spark spark-one">✦</span><span class="spark spark-two">✧</span>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div><span class="stat-icon">⌕</span><p><b id="stat-jobs">—</b><small>Open opportunities</small></p></div>
+      <div><span class="stat-icon green">↗</span><p><b>Simple</b><small>One place to apply</small></p></div>
+      <div><span class="stat-icon orange">◷</span><p><b>Live</b><small>Application tracking</small></p></div>
+    </section>
+
+    <section id="jobs-view" class="content-section">
+      <div class="section-heading">
+        <div><p class="eyebrow">EXPLORE OPPORTUNITIES</p><h2>Find your next role</h2></div>
+        <span class="muted" id="results-count">Loading jobs…</span>
+      </div>
+      <form id="search-form" class="search-panel">
+        <label class="search-field"><span>⌕</span><input id="search-q" placeholder="Job title, company, or skill" autocomplete="off"></label>
+        <label class="search-field"><span>⌖</span><input id="search-location" placeholder="City or remote"></label>
+        <label class="select-field"><select id="search-type"><option value="">All job types</option><option>Full-time</option><option>Part-time</option><option>Internship</option><option>Contract</option></select></label>
+        <button class="primary-btn" type="submit">Search jobs</button>
+      </form>
+      <div id="message" class="message hidden" role="status"></div>
+      <div id="job-list" class="job-grid"></div>
+      <div class="center"><button id="load-more" class="secondary-btn hidden">Load more jobs</button></div>
+    </section>
+
+    <section id="history-view" class="content-section hidden">
+      <div class="section-heading"><div><p class="eyebrow">YOUR JOB SEARCH</p><h2>My applications</h2><p class="muted">Enter the email address you used when applying.</p></div></div>
+      <form id="history-form" class="history-search">
+        <input id="history-email" type="email" required placeholder="you@example.com">
+        <button class="primary-btn" type="submit">View applications</button>
+      </form>
+      <div id="history-list"></div>
+    </section>
+
+    <section class="architecture">
+      <div class="architecture-heading"><div><p class="eyebrow">BUILT TO SCALE</p><h2>Behind the platform</h2><p class="muted">This demo runs locally with FastAPI and SQLite. The architecture below shows how it can scale for millions of users.</p></div><span class="architecture-badge">ROUND 3 · SYSTEM DESIGN</span></div>
+      <div class="arch-flow">
+        <div class="arch-node client"><span>01</span><b>Web / Mobile</b><small>HTML · CSS · JS</small></div><div class="arch-arrow">→</div>
+        <div class="arch-node gateway"><span>02</span><b>API Gateway</b><small>Auth · Routing · Limits</small></div><div class="arch-arrow">→</div>
+        <div class="arch-node services"><span>03</span><b>Backend services</b><small>Users · Jobs · Applications</small></div>
+      </div>
+      <div class="arch-connect">↓ data & events ↓</div>
+      <div class="arch-bottom">
+        <div class="arch-node db"><span>04</span><b>PostgreSQL</b><small>Persistent records</small></div>
+        <div class="arch-node cache"><span>05</span><b>Redis cache</b><small>Hot job listings</small></div>
+        <div class="arch-node search"><span>06</span><b>Search engine</b><small>OpenSearch</small></div>
+        <div class="arch-node queue"><span>07</span><b>Message queue</b><small>Kafka / RabbitMQ</small></div>
+        <div class="arch-node notify"><span>08</span><b>Notifications</b><small>Email · SMS · Push</small></div>
+      </div>
+      <div class="scale-notes"><span>✓ Horizontal scaling behind a load balancer</span><span>✓ Cache frequently searched jobs</span><span>✓ Process notifications asynchronously</span><span>✓ Index job titles, skills, and locations</span></div>
+    </section>
+    <footer><span>© 2026 HireHub Demo</span><span>Built with FastAPI · SQLite · Vanilla JavaScript</span></footer>
+  </main>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-backdrop" data-close="true"></div>
+    <div class="modal-card"><button class="modal-close" id="modal-close" aria-label="Close">×</button><div id="modal-content"></div></div>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
